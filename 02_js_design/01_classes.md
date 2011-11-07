@@ -4,55 +4,11 @@
 
 !SLIDE
 
-# You probably thought this
-# presentation was about testing!
-
-!SLIDE
-
-![Chuck Testa](testa.jpeg)
-# Nope!
-
-!SLIDE
-
-# Refactoring
-
-!SLIDE
-
-# Testing makes
-# refactoring easier
-
-!SLIDE
-
-# Red – Green – Refactor
-
-!SLIDE
-
-# Unit testing
-
-!SLIDE
-
-# Unit
-
-!SLIDE purple
-
-# Our code needs more units!
-
-!SLIDE
-
-# In Ruby we have
-# classes and modules
-
-!SLIDE
-
-# In JavaScript we have
-# ???
-
-!SLIDE
-
-# We need to make
-# our own structure
+## It's not really about testing
 
 !SLIDE code small
+
+## Have you written something like this:
 
     @@@javascript
     $('#whiskies li').each(function() {
@@ -74,6 +30,11 @@
 
 !SLIDE
 
+# This does not scale!
+
+!SLIDE
+
+# Unstructured
 # Untestable
 
 !SLIDE
@@ -92,234 +53,122 @@
 
 !SLIDE
 
+# jQuery is not your design
+## (it doesn't claim to be)
+
+!SLIDE
+
 # We need something more!
+
+!SLIDE
+
+# Structure code into units
 
 !SLIDE blue
 
 # Possible solutions
-## Function-style
+## Functions
 ## JS prototypes
-## MooTools
+## MooTools Classes
 ## CoffeeScript Classes
 ## Backbone.js
-## (SproutCore)
+## Spine.js
+## SproutCore
 
 !SLIDE
 
-# Function-style
+# Distinct logical units
+## which can be tested in isolation
+
+!SLIDE
+
+# Structure application into concerns
+
+!SLIDE
+
+# SRP
+## Single Responsibility Principle
+
+!SLIDE
+
+## Every class/unit
+# should have one single responsibility
+
+!SLIDE
+
+## We are totally
+# ignoring this
 
 !SLIDE code small
+
+# Let's look at this again
 
     @@@javascript
-    var Cart = function(element) {
-      var self = {}
-      var element = $(element);
-      var list = this.element.find('.list');
-      var total = this.element.find('.total .amount');
-      var items = [];
+    $('#whiskies li').each(function() {
+      var li = $(this);
+      var price = li.attr('data-price');
+      var addLink = $('<a class="add-to-cart" href="#">Add to cart</a>');
+      addLink.appendTo(li);
 
-      self.addItem = function(item) {
-        element = $('<li>' + item.name + '<span class="price">' +
-          item.price + '</span></li>').appendTo(this.list);
-        items.push({ name: item.name, price: item.price, });
-        self.updateTotal();
-      };
-
-      self.updateTotal = function() {
-        sum = 0;
-        $(items).each(function() { sum += this.price });
-        self.total.text(sum);
-      };
-
-      return self;
-    };
+      addLink.click(function() {
+        var item = $('<li>' + li.attr('data-name') + '</li>');
+        item.appendTo('#cart .list');
+        item.append('<span class="price">' + price + '</span>');
+        var currentAmount = parseInt($('#cart .total .amount').text());
+        var newAmount = currentAmount + parseInt(price);
+        $('#cart .total .amount').text(newAmount);
+        return false;
+      });
+    });
 
 !SLIDE
 
-# Pro
-## No dependencies
-## Truly hidden state
+* Business logic
+* Rendering
+* Event handling
+* Boostrapping
+* (Persistence)
 
 !SLIDE
 
-# Con
-## Becomes messy
-## Still too unstructured
-## Still tricky to test
-## Yum memory!
+# Separate concerns
+## should be handled separately
 
 !SLIDE
 
-# JS prototypes
-
-!SLIDE code small
-
-    @@@javascript
-    var Cart = function(element) {
-      this.element = $(element);
-      this.list = this.element.find('.list');
-      this.total = this.element.find('.total .amount');
-      this.items = [];
-    };
-
-    Cart.prototype.addItem = function(item) {
-      element = $('<li>' + item.name + '<span class="price">' +
-        item.price + '</span></li>').appendTo(this.list);
-      this.items.push({ name: item.name, price: item.price, });
-      this.updateTotal();
-    };
-
-    Cart.prototype.updateTotal = function() {
-      sum = 0;
-      $(this.items).each(function() { sum += this.price });
-      this.total.text(sum);
-    };
+# How?
 
 !SLIDE
 
-# Pro
-## No extra dependencies
-## Memory efficient
-## Easy to test
-## Good structure
+# It's up to you!
 
 !SLIDE
 
-# Con
-## Ohh god my eyes
-## So much typing ☹
+# Suggestion: MVC
 
 !SLIDE
 
-# MooTools classes
+# Model
 
-!SLIDE code small
-
-    @@@javascript
-    var Cart = new Class({
-      initialize: function(element) {
-        this.element = element;
-        this.list = this.element.getElement('.list');
-        this.total = this.element.getElement('.total .amount');
-        this.items = [];
-      },
-      addItem: function(item) {
-        element = new Element('li', { text: item.name }).inject(this.list);
-        new Element('span', { className: 'price', test: item.name }).inject(element);
-        this.items.push({ name: item.name, price: item.price });
-        this.updateTotal();
-      },
-      updateTotal: function() {
-        sum = this.items.sum(function(item) { item.price });
-        this.total.text(sum);
-      }
-    })
+* Persistence
+* Business logic
 
 !SLIDE
 
-# Pro
-## Nicer syntax
-## Extensible
-## Easy to test
-## MooTools is awesome
+# Controller
+
+* Event handling
 
 !SLIDE
 
-# Con
-## Have to use MooTools
-## JSON strucure as class is a bit ugly
+# View
+
+* Rendering
 
 !SLIDE
 
-# CoffeeScript classes
+# Use a framework
 
-!SLIDE code small
-
-    @@@ruby
-    class Cart
-      constructor: (@element) ->
-        @list = this.element.getElement('.list')
-        @total = this.element.getElement('.total .amount')
-        @items = []
-
-      addItem: (item) ->
-        element = new Element('li', text: item.name).inject(@list)
-        new Element('span', className: 'price', test: item.name).inject(element)
-        @items.push(name: item.name, price: item.price)
-        @updateTotal()
-
-      updateTotal: ->
-        @total.text @items.sum((item) -> item.price)
-
-!SLIDE
-
-# Pro
-## CoffeeScript is super awesome
-## It's really, really awesome
-## No seriously
-
-!SLIDE
-
-# Pro
-## CoffeeScript is super awesome
-## Concise syntax
-## Use whatever framework you want
-## Compiles to clean JS Prototypes
-
-!SLIDE
-
-# Con
-## Debugging is hard
-## Need to be able to compile CoffeeScript
-
-!SLIDE
-
-# Backbone.js
-
-!SLIDE code small
-
-    @@@ruby
-    class Item extends Backbone.Model
-
-    class Cart extends Backbone.Collection
-      model: Item
-
-    class CartItemView extends Backbone.View
-      model: Item
-      tagName: 'li'
-
-      render: ->
-        $(@el).append("#{@model.name} <span class='price'>#{@model.price}</span>")
-
-    class CartView extends Backbone.View
-      collection: Cart
-
-      initialize: ->
-        @list = $(@el).find('.list')
-        @total = $(@el).find('.total')
-        @collection.bind 'change', =>
-          @updateTotal()
-        @collection.bind 'add', item, =>
-          @list.append(new CartItemView(item).render()
-
-      updateTotal: ->
-        @total.text @collection.sum((item) -> item.price)
-
-
-!SLIDE
-
-# Pro
-## MV(C) Structure
-## Easy to test
-## Scales well
-
-!SLIDE
-
-# Con
-## jQuery only
-## Extra dependency
-## Possibly overkill
-
-!SLIDE purple
-
-# tl;dw: structure!
+* Backbone.js
+* Spine.js
+* SproutCore

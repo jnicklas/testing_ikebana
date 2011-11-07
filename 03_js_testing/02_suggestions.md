@@ -13,6 +13,16 @@
 
 !SLIDE
 
+# Isolate components
+# From the DOM
+
+!SLIDE
+
+# Isolate AJAX
+# to avoid brittle tests
+
+!SLIDE
+
 # Separate into files
 
 !SLIDE purple
@@ -33,13 +43,13 @@
 
 !SLIDE
 
-# Isolate AJAX
-# to avoid brittle tests
+# Use mocks
+## to isolate components
 
 !SLIDE
 
-# Mock AJAX
-## if necessary
+## You don't own AJAX
+# don't mock it
 
 !SLIDE
 
@@ -48,8 +58,17 @@
 
 !SLIDE
 
-# Use integration tests
-# to validate templates
+# Write integration tests
+
+!SLIDE code small
+
+# Capybara
+
+    @@@ruby
+    visit('/todos')
+    fill_in('Description', :with => 'Walk the dog')
+    click_button('Create')
+    page.should have_selector('.task', :text => 'Walk the dog')
 
 !SLIDE
 

@@ -40,6 +40,7 @@
 
 !SLIDE
 
+## If you're using Rails
 # Works great with Rails
 
 !SLIDE code
@@ -50,7 +51,6 @@
 !SLIDE
 
 # Not tied to Rails
-## Integrates with any Rack framework
 ## Works well for testing pure JS
 
 !SLIDE
@@ -63,21 +63,22 @@
 
 # Running tests
 
+## In browser
+
+    $ evergreen serve
+
+## From command line
+
+    $ evergreen run
+
 !SLIDE
 
-# In browser: /evergreen
-## (Rails engine)
+# Multiple drivers
 
-!SLIDE
-
-# From command line
-
-!SLIDE
-
-# Any Capybara driver
-## Selenium
-## Webkit
-## EnvJS
+* Selenium
+* Headless webkit
+* HTMLUnit
+* EnvJS
 
 !SLIDE purple
 

@@ -7,11 +7,12 @@ body {
   font-size: 96px;
   text-transform: uppercase;
   line-height: 120%;
-  margin: 0;
+  margin: 0 120px;
+  text-align: left;
 }
 .slide img {
   display: block;
-  margin: 1em auto;
+  margin: 1em 0;
   border: 1px solid black;
   padding: 10px;
   background: white;
@@ -23,12 +24,25 @@ body {
 .slide h2 {
   font-size: 64px;
 }
+.slide p {
+  margin: 0 120px;
+  text-align: left;
+}
 .slide h3, .slide h4 {
   font-size: 36px;
   font-weight: normal;
 }
+.slide ul {
+  margin: 0;
+  padding: 0;
+}
 .slide ul li {
-  font-size: 36px;
+  font-size: 64px;
+  font-family: 'League Gothic', 'Helvetica Neue', sans-serif;
+  padding: 0;
+  margin: 0.2em 0 0.2em 120px;
+  list-style: outside;
+  text-align: left;
 }
 
 .slide a:link, .slide a:visited {
@@ -116,13 +130,14 @@ body {
 }
 
 .slide pre, .slide pre.sh_sourceCode {
-  font-size: 32px;
+  font-size: 24px;
   line-height: 150%;
-  margin: 20px;
+  margin: 10px 120px 40px;
   padding: 20px 20px;
   font-family: 'Monaco';
-  background: rgba(255,255,255,0.8);
-  border: 1px solid rgba(255,255,255,0.8);
+  background: #fff;
+  color: #000;
+  -webkit-border-radius: 5px;
 }
 .slide code, .slide pre.sh_sourceCode .sh_string {
   font-family: 'Monaco' !important;
@@ -131,3 +146,21 @@ body {
 .slide.code.small pre {
   font-size: 18px;
 }
+
+.slide.countdown strong {
+  display: inline-block;
+  background: #333;
+  border: 8px solid white;
+  -webkit-border-radius: 10px;
+  color: white;
+  padding: 10px;
+  font-family: 'Monaco' !important;
+  font-size: 200px;
+  margin: -100px 0 0;
+}
+
+.slide.countdown strong.done {
+  border-color: red;
+  color: red;
+}
+

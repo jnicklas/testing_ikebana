@@ -2,87 +2,109 @@
 
 !SLIDE splash
 
-# Practical testing
-# for assorted languages
+# Testing Ikebana
 
 #### Jonas Nicklas – @jonicklas
-
-!SLIDE blue
-
-# ♥ programming ♥
-
-!SLIDE blue
-
-# ♥ testing ♥
-
-!SLIDE blue
-
-# ♥ Ruby ♥
-
-!SLIDE blue
-
-# ☢ JavaScript ☢
+#### Elabs in Göteborg
 
 !SLIDE
 
 # Ruby
-## Beautiful
-## Well structured
-## Well tested
+## Since 2005
 
 !SLIDE
 
-# JavaScript
-## Ugly
-## Not structured
-## Not tested
+# TDD
+## Sounds boring!
 
 !SLIDE
 
-# We don't accept this
-# for Ruby
+# Realization!
+## manual testing is boring
 
 !SLIDE
 
-# We should not accept this
-# for JavaScript
+* Build something
+* Check that it works
+* Check that nothing broke
 
 !SLIDE
 
-# All codes are created equal
+# Now do that 1000 times
 
 !SLIDE
 
-# ![Animal Farm Pigs](pigs.jpg)
-## (some are more equal than others)
+* Build something
+* Know that it works
+* Know that nothing broke
 
 !SLIDE
 
-# _Why?
+# Ruby
+## Test obsessed
 
 !SLIDE
 
-# Neglected
+# Another realization
+## Testing is not about regressions
 
 !SLIDE
 
-# Rails doesn't help
+# Benefits of testing
+
+* Refactoring
+* Design
 
 !SLIDE
 
-# Not ”real” code
+# No one writes perfect code
+## on the first try
 
-!SLIDE purple
+!SLIDE
 
-# Today
-## JavaScript design
-## JavaScript unit testing
-## Integration testing
+# Make changes without affecting functionality
 
-!SLIDE purple
+!SLIDE
 
-# It's not hard
+# How do you know?
 
-!SLIDE purple
+!SLIDE
 
-# Treat your JavaScript better
+# Manually
+## Tiresome – makes you less likely to do it
+
+!SLIDE
+
+# Automated
+## Write it once, never think about it again
+
+!SLIDE
+
+## Once code is written
+# it will never be changed
+
+!SLIDE
+
+# The Quality of Code
+## Lies in how easy it is to change
+
+!SLIDE
+
+# Test driven
+## vs
+# Test first
+
+!SLIDE
+
+# TDD means
+## the tests influence your design
+
+!SLIDE
+
+## Painful testing means
+# design isn't good enough
+
+!SLIDE
+
+## Well structured code
+# is easy to test
