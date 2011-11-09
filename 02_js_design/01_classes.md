@@ -4,7 +4,8 @@
 
 !SLIDE
 
-## It's not really about testing
+# It's not really
+# about testing
 
 !SLIDE code small
 
@@ -101,7 +102,7 @@
 
 !SLIDE code small
 
-# Let's look at this again
+## Let's look at this again
 
     @@@javascript
     $('#whiskies li').each(function() {
@@ -150,8 +151,8 @@
 
 # Model
 
-* Persistence
 * Business logic
+* (Persistence)
 
 !SLIDE
 

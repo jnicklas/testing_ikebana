@@ -45,8 +45,17 @@
 
 !SLIDE
 
+# Legacy code
+## Is code which does not have any tests
+
+!SLIDE
+
 # Another realization
 ## Testing is not about regressions
+
+!SLIDE
+
+# Improving design
 
 !SLIDE
 
