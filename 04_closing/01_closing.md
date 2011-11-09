@@ -16,7 +16,10 @@
 
 !SLIDE
 
-# Come to NordicRuby!
+# NordicRuby
+## Stockholm 2012
+## June 15th – 16th
+## [nordicruby.org](http://www.nordicruby.org)
 
 !SLIDE splash
 
